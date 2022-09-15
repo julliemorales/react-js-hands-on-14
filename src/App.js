@@ -1,24 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import "remixicon/fonts/remixicon.css";
+import "./App.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Homepage from "./components/Homepage";
+import SingleGame from "./components/SingleGame";
+import AllGames from "./components/AllGames";
+import PageNotFound from "./components/PageNotFound";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route index element={<Homepage />} />
+        <Route path="/game" element={<SingleGame />} />
+        <Route path="/games" element={<AllGames />} />
+        <Route path="*" element={<PageNotFound />} />
+      </Routes>
+    </Router>
   );
 }
 
